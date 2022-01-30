@@ -6,12 +6,14 @@
   "scripts": {
     "test": "tap \"test/**/*.test.js\"",
     "start": "fastify start -l info app.js",
-    "dev": "fastify start -w -l info -P app.js"
+    "dev": "fastify start -w -l info -P app.js",
+    "queue": "nodemon queue.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bull": "^4.4.0",
     "dotenv": "^14.3.2",
     "fastify": "^3.0.0",
     "fastify-autoload": "^3.10.0",
@@ -21,6 +23,7 @@
     "nodemailer": "^6.7.2"
   },
   "devDependencies": {
+    "nodemon": "^2.0.15",
     "tap": "^15.1.6"
   }
 }

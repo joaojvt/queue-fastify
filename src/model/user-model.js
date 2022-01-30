@@ -1,12 +1,12 @@
 class UserModel {
   #user = []
 
-  save(user) {
+  async save(user) {
     this.#user.push(user)
     return user
   }
 
-  findAll() {
+  async findAll() {
     return this.#user;
   }
 }

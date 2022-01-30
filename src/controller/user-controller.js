@@ -1,17 +1,24 @@
+const { mailQueue } = require("../lib/Queue")
 const userModel = require("../model/user-model")
 
 class UserController {
-  #users
+  users
 
   constructor() {
-    this.#users = userModel
+    this.users = userModel
   }
 
   async store(req, replay) {
     const user = req.body
-    this.#users.save(user)
+    await userModel.save(user)
+
+    await mailQueue.add({ user })
 
     return replay.code(201).send(user)
+  }
+
+  async listAll(req, replay) {
+    return userModel.findAll()
   }
 }
 
